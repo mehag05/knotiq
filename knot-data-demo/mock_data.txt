@@ -1,0 +1,911 @@
+{
+    "merchant": {
+        "id": 1,
+        "name": "Whole Foods Market"
+    },
+    "transactions": [
+        {
+            "id": "a1b2c3d4-e5f6-4a5b-9c8d-7e6f5d4c3b2a",
+            "external_id": "wf-123456789",
+            "datetime": "2024-03-15T14:30:00+00:00",
+            "url": "https://www.wholefoodsmarket.com/orders/123456789",
+            "order_status": "COMPLETED",
+            "payment_methods": [
+                {
+                    "external_id": "chk-789",
+                    "type": "CARD",
+                    "brand": "VISA",
+                    "last_four": "4242",
+                    "name": null,
+                    "transaction_amount": 85.50
+                }
+            ],
+            "price": {
+                "sub_total": 85.50,
+                "adjustments": [],
+                "total": 85.50,
+                "currency": "USD"
+            },
+            "products": [
+                {
+                    "external_id": "org-123",
+                    "name": "Organic Bananas, 2.5 lbs",
+                    "url": "https://www.wholefoodsmarket.com/products/123",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 4.99,
+                        "total": 4.99,
+                        "unit_price": 4.99
+                    }
+                },
+                {
+                    "external_id": "sal-456",
+                    "name": "Organic Spring Mix Salad, 5 oz",
+                    "url": "https://www.wholefoodsmarket.com/products/456",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 5.99,
+                        "total": 5.99,
+                        "unit_price": 5.99
+                    }
+                },
+                {
+                    "external_id": "chk-789",
+                    "name": "Organic Chicken Breast, 1 lb",
+                    "url": "https://www.wholefoodsmarket.com/products/789",
+                    "quantity": 2,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 74.52,
+                        "total": 74.52,
+                        "unit_price": 37.26
+                    }
+                }
+            ]
+        }
+    ],
+    "next_cursor": "eyJpZCI6MTIzNDUsIl9wb2ludHNUb05leHRJdGVtcyI6dHJ1ZX0",
+    "limit": 5
+}
+
+{
+    "merchant": {
+        "id": 2,
+        "name": "Target"
+    },
+    "transactions": [
+        {
+            "id": "b2c3d4e5-f6a7-5b6c-0d1e-8f7e6d5c4b3a",
+            "external_id": "tgt-987654321",
+            "datetime": "2024-03-14T16:45:00+00:00",
+            "url": "https://www.target.com/orders/987654321",
+            "order_status": "COMPLETED",
+            "payment_methods": [
+                {
+                    "external_id": "red-456",
+                    "type": "CARD",
+                    "brand": "REDCARD",
+                    "last_four": "8888",
+                    "name": null,
+                    "transaction_amount": 45.99
+                }
+            ],
+            "price": {
+                "sub_total": 45.99,
+                "adjustments": [],
+                "total": 45.99,
+                "currency": "USD"
+            },
+            "products": [
+                {
+                    "external_id": "cln-123",
+                    "name": "Method All-Purpose Cleaner, 28 oz",
+                    "url": "https://www.target.com/products/123",
+                    "quantity": 2,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 15.98,
+                        "total": 15.98,
+                        "unit_price": 7.99
+                    }
+                },
+                {
+                    "external_id": "pap-456",
+                    "name": "Up & Up Paper Towels, 6 rolls",
+                    "url": "https://www.target.com/products/456",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 8.99,
+                        "total": 8.99,
+                        "unit_price": 8.99
+                    }
+                },
+                {
+                    "external_id": "snk-789",
+                    "name": "Good & Gather Trail Mix, 16 oz",
+                    "url": "https://www.target.com/products/789",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 21.02,
+                        "total": 21.02,
+                        "unit_price": 21.02
+                    }
+                }
+            ]
+        }
+    ],
+    "next_cursor": "eyJpZCI6MjM0NTYsIl9wb2ludHNUb05leHRJdGVtcyI6dHJ1ZX0",
+    "limit": 5
+}
+
+{
+    "merchant": {
+        "id": 3,
+        "name": "CVS Pharmacy"
+    },
+    "transactions": [
+        {
+            "id": "c3d4e5f6-a7b8-6c7d-1e2f-9g8h7i6j5k4l",
+            "external_id": "cvs-456789123",
+            "datetime": "2024-03-13T09:15:00+00:00",
+            "url": "https://www.cvs.com/orders/456789123",
+            "order_status": "COMPLETED",
+            "payment_methods": [
+                {
+                    "external_id": "fsa-123",
+                    "type": "CARD",
+                    "brand": "FSA",
+                    "last_four": "1111",
+                    "name": null,
+                    "transaction_amount": 35.97
+                }
+            ],
+            "price": {
+                "sub_total": 35.97,
+                "adjustments": [],
+                "total": 35.97,
+                "currency": "USD"
+            },
+            "products": [
+                {
+                    "external_id": "vit-123",
+                    "name": "Nature Made Vitamin D3, 1000 IU, 100 tablets",
+                    "url": "https://www.cvs.com/products/123",
+                    "quantity": 1,
+                    "eligibility": ["FSA/HSA"],
+                    "price": {
+                        "sub_total": 12.99,
+                        "total": 12.99,
+                        "unit_price": 12.99
+                    }
+                },
+                {
+                    "external_id": "med-456",
+                    "name": "Tylenol Extra Strength, 100 tablets",
+                    "url": "https://www.cvs.com/products/456",
+                    "quantity": 1,
+                    "eligibility": ["FSA/HSA"],
+                    "price": {
+                        "sub_total": 22.98,
+                        "total": 22.98,
+                        "unit_price": 22.98
+                    }
+                }
+            ]
+        }
+    ],
+    "next_cursor": "eyJpZCI6MzQ1NjcsIl9wb2ludHNUb05leHRJdGVtcyI6dHJ1ZX0",
+    "limit": 5
+}
+
+{
+    "merchant": {
+        "id": 4,
+        "name": "Chipotle Mexican Grill"
+    },
+    "transactions": [
+        {
+            "id": "d4e5f6g7-b8c9-7d8e-2f3g-0h1i2j3k4l5m",
+            "external_id": "chp-789123456",
+            "datetime": "2024-03-12T12:30:00+00:00",
+            "url": "https://www.chipotle.com/orders/789123456",
+            "order_status": "COMPLETED",
+            "payment_methods": [
+                {
+                    "external_id": "app-456",
+                    "type": "CARD",
+                    "brand": "APPLEPAY",
+                    "last_four": "8888",
+                    "name": null,
+                    "transaction_amount": 18.45
+                }
+            ],
+            "price": {
+                "sub_total": 18.45,
+                "adjustments": [],
+                "total": 18.45,
+                "currency": "USD"
+            },
+            "products": [
+                {
+                    "external_id": "bur-123",
+                    "name": "Chicken Burrito Bowl",
+                    "url": "https://www.chipotle.com/products/123",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 12.95,
+                        "total": 12.95,
+                        "unit_price": 12.95
+                    }
+                },
+                {
+                    "external_id": "drk-456",
+                    "name": "Fountain Drink",
+                    "url": "https://www.chipotle.com/products/456",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 5.50,
+                        "total": 5.50,
+                        "unit_price": 5.50
+                    }
+                }
+            ]
+        }
+    ],
+    "next_cursor": "eyJpZCI6NDU2Nzg5LCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9",
+    "limit": 5
+}
+
+{
+    "merchant": {
+        "id": 5,
+        "name": "Amazon"
+    },
+    "transactions": [
+        {
+            "id": "e5f6g7h8-c9d0-8e9f-3g4h-1i2j3k4l5m6n",
+            "external_id": "amz-123456789",
+            "datetime": "2024-03-11T15:20:00+00:00",
+            "url": "https://www.amazon.com/orders/123456789",
+            "order_status": "SHIPPED",
+            "payment_methods": [
+                {
+                    "external_id": "amz-789",
+                    "type": "CARD",
+                    "brand": "AMAZON",
+                    "last_four": "4444",
+                    "name": null,
+                    "transaction_amount": 129.99
+                }
+            ],
+            "price": {
+                "sub_total": 129.99,
+                "adjustments": [],
+                "total": 129.99,
+                "currency": "USD"
+            },
+            "products": [
+                {
+                    "external_id": "ele-123",
+                    "name": "Apple AirPods Pro (2nd Generation)",
+                    "url": "https://www.amazon.com/products/123",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 129.99,
+                        "total": 129.99,
+                        "unit_price": 129.99
+                    }
+                }
+            ]
+        }
+    ],
+    "next_cursor": "eyJpZCI6NTY3ODkwLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9",
+    "limit": 5
+}
+
+{
+    "merchant": {
+        "id": 6,
+        "name": "Trader Joe's"
+    },
+    "transactions": [
+        {
+            "id": "f6g7h8i9-d0e1-9f0g-4h5i-2j3k4l5m6n7o",
+            "external_id": "tj-234567890",
+            "datetime": "2024-03-10T11:20:00+00:00",
+            "url": "https://www.traderjoes.com/orders/234567890",
+            "order_status": "COMPLETED",
+            "payment_methods": [
+                {
+                    "external_id": "visa-123",
+                    "type": "CARD",
+                    "brand": "VISA",
+                    "last_four": "5555",
+                    "name": null,
+                    "transaction_amount": 42.85
+                }
+            ],
+            "price": {
+                "sub_total": 42.85,
+                "adjustments": [],
+                "total": 42.85,
+                "currency": "USD"
+            },
+            "products": [
+                {
+                    "external_id": "froz-123",
+                    "name": "Trader Joe's Mandarin Orange Chicken",
+                    "url": "https://www.traderjoes.com/products/123",
+                    "quantity": 2,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 11.98,
+                        "total": 11.98,
+                        "unit_price": 5.99
+                    }
+                },
+                {
+                    "external_id": "snk-456",
+                    "name": "Trader Joe's Dark Chocolate Covered Almonds",
+                    "url": "https://www.traderjoes.com/products/456",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 5.99,
+                        "total": 5.99,
+                        "unit_price": 5.99
+                    }
+                },
+                {
+                    "external_id": "prod-789",
+                    "name": "Trader Joe's Everything But The Bagel Seasoning",
+                    "url": "https://www.traderjoes.com/products/789",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 4.99,
+                        "total": 4.99,
+                        "unit_price": 4.99
+                    }
+                },
+                {
+                    "external_id": "wine-101",
+                    "name": "Trader Joe's Charles Shaw Cabernet Sauvignon",
+                    "url": "https://www.traderjoes.com/products/101",
+                    "quantity": 2,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 19.90,
+                        "total": 19.90,
+                        "unit_price": 9.95
+                    }
+                }
+            ]
+        }
+    ],
+    "next_cursor": "eyJpZCI6Njc4OTAxLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9",
+    "limit": 5
+}
+
+{
+    "merchant": {
+        "id": 7,
+        "name": "Starbucks"
+    },
+    "transactions": [
+        {
+            "id": "g7h8i9j0-e1f2-0g1h-5i6j-3k4l5m6n7o8p",
+            "external_id": "sbx-345678901",
+            "datetime": "2024-03-09T08:15:00+00:00",
+            "url": "https://www.starbucks.com/orders/345678901",
+            "order_status": "COMPLETED",
+            "payment_methods": [
+                {
+                    "external_id": "star-456",
+                    "type": "CARD",
+                    "brand": "STARBUCKS",
+                    "last_four": "7777",
+                    "name": null,
+                    "transaction_amount": 12.45
+                }
+            ],
+            "price": {
+                "sub_total": 12.45,
+                "adjustments": [],
+                "total": 12.45,
+                "currency": "USD"
+            },
+            "products": [
+                {
+                    "external_id": "drk-123",
+                    "name": "Venti Caramel Macchiato",
+                    "url": "https://www.starbucks.com/products/123",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 6.95,
+                        "total": 6.95,
+                        "unit_price": 6.95
+                    }
+                },
+                {
+                    "external_id": "bak-456",
+                    "name": "Butter Croissant",
+                    "url": "https://www.starbucks.com/products/456",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 5.50,
+                        "total": 5.50,
+                        "unit_price": 5.50
+                    }
+                }
+            ]
+        }
+    ],
+    "next_cursor": "eyJpZCI6Nzg5MDEyLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9",
+    "limit": 5
+}
+
+{
+    "merchant": {
+        "id": 8,
+        "name": "Netflix"
+    },
+    "transactions": [
+        {
+            "id": "h8i9j0k1-f2g3-1h2i-6j7k-4l5m6n7o8p9q",
+            "external_id": "nflx-456789012",
+            "datetime": "2024-03-08T00:00:00+00:00",
+            "url": "https://www.netflix.com/orders/456789012",
+            "order_status": "COMPLETED",
+            "payment_methods": [
+                {
+                    "external_id": "mast-789",
+                    "type": "CARD",
+                    "brand": "MASTERCARD",
+                    "last_four": "3333",
+                    "name": null,
+                    "transaction_amount": 15.99
+                }
+            ],
+            "price": {
+                "sub_total": 15.99,
+                "adjustments": [],
+                "total": 15.99,
+                "currency": "USD"
+            },
+            "products": [
+                {
+                    "external_id": "sub-123",
+                    "name": "Netflix Premium Subscription",
+                    "url": "https://www.netflix.com/products/123",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 15.99,
+                        "total": 15.99,
+                        "unit_price": 15.99
+                    }
+                }
+            ]
+        }
+    ],
+    "next_cursor": "eyJpZCI6ODkwMTIzLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9",
+    "limit": 5
+}
+
+{
+    "merchant": {
+        "id": 9,
+        "name": "Best Buy"
+    },
+    "transactions": [
+        {
+            "id": "i9j0k1l2-g3h4-2i3j-7k8l-5m6n7o8p9q0r",
+            "external_id": "bb-567890123",
+            "datetime": "2024-03-07T13:45:00+00:00",
+            "url": "https://www.bestbuy.com/orders/567890123",
+            "order_status": "SHIPPED",
+            "payment_methods": [
+                {
+                    "external_id": "bb-456",
+                    "type": "CARD",
+                    "brand": "BESTBUY",
+                    "last_four": "6666",
+                    "name": null,
+                    "transaction_amount": 299.99
+                }
+            ],
+            "price": {
+                "sub_total": 299.99,
+                "adjustments": [],
+                "total": 299.99,
+                "currency": "USD"
+            },
+            "products": [
+                {
+                    "external_id": "ele-123",
+                    "name": "Sony WH-1000XM4 Wireless Headphones",
+                    "url": "https://www.bestbuy.com/products/123",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 299.99,
+                        "total": 299.99,
+                        "unit_price": 299.99
+                    }
+                }
+            ]
+        }
+    ],
+    "next_cursor": "eyJpZCI6OTAxMjM0LCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9",
+    "limit": 5
+}
+
+{
+    "merchant": {
+        "id": 10,
+        "name": "PetSmart"
+    },
+    "transactions": [
+        {
+            "id": "j0k1l2m3-h4i5-3j4k-8l9m-6n7o8p9q0r1s",
+            "external_id": "pets-678901234",
+            "datetime": "2024-03-06T10:30:00+00:00",
+            "url": "https://www.petsmart.com/orders/678901234",
+            "order_status": "COMPLETED",
+            "payment_methods": [
+                {
+                    "external_id": "visa-789",
+                    "type": "CARD",
+                    "brand": "VISA",
+                    "last_four": "8888",
+                    "name": null,
+                    "transaction_amount": 89.97
+                }
+            ],
+            "price": {
+                "sub_total": 89.97,
+                "adjustments": [],
+                "total": 89.97,
+                "currency": "USD"
+            },
+            "products": [
+                {
+                    "external_id": "food-123",
+                    "name": "Purina Pro Plan Adult Dog Food, 30 lb",
+                    "url": "https://www.petsmart.com/products/123",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 59.99,
+                        "total": 59.99,
+                        "unit_price": 59.99
+                    }
+                },
+                {
+                    "external_id": "toy-456",
+                    "name": "Kong Classic Dog Toy",
+                    "url": "https://www.petsmart.com/products/456",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 29.98,
+                        "total": 29.98,
+                        "unit_price": 29.98
+                    }
+                }
+            ]
+        }
+    ],
+    "next_cursor": "eyJpZCI6MTAxMjM0NSwiX3BvaW50c1RvTmV4dEl0ZW1zIjp0cnVlfQ==",
+    "limit": 5
+}
+
+{
+    "merchant": {
+        "id": 11,
+        "name": "Verizon Wireless"
+    },
+    "transactions": [
+        {
+            "id": "k1l2m3n4-i5j6-4k5l-9m0n-7o8p9q0r1s2t",
+            "external_id": "vzw-789012345",
+            "datetime": "2024-03-05T00:00:00+00:00",
+            "url": "https://www.verizon.com/orders/789012345",
+            "order_status": "COMPLETED",
+            "payment_methods": [
+                {
+                    "external_id": "auto-123",
+                    "type": "CARD",
+                    "brand": "VISA",
+                    "last_four": "2222",
+                    "name": null,
+                    "transaction_amount": 85.00
+                }
+            ],
+            "price": {
+                "sub_total": 85.00,
+                "adjustments": [],
+                "total": 85.00,
+                "currency": "USD"
+            },
+            "products": [
+                {
+                    "external_id": "bill-123",
+                    "name": "Verizon Wireless Monthly Service",
+                    "url": "https://www.verizon.com/products/123",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 85.00,
+                        "total": 85.00,
+                        "unit_price": 85.00
+                    }
+                }
+            ]
+        }
+    ],
+    "next_cursor": "eyJpZCI6MTEyMzQ1NiwiX3BvaW50c1RvTmV4dEl0ZW1zIjp0cnVlfQ==",
+    "limit": 5
+}
+
+{
+    "merchant": {
+        "id": 12,
+        "name": "Costco"
+    },
+    "transactions": [
+        {
+            "id": "l2m3n4o5-j6k7-5l6m-0n1o-8p9q0r1s2t3u",
+            "external_id": "cost-890123456",
+            "datetime": "2024-03-04T15:20:00+00:00",
+            "url": "https://www.costco.com/orders/890123456",
+            "order_status": "COMPLETED",
+            "payment_methods": [
+                {
+                    "external_id": "exec-456",
+                    "type": "CARD",
+                    "brand": "COSTCO",
+                    "last_four": "9999",
+                    "name": null,
+                    "transaction_amount": 245.67
+                }
+            ],
+            "price": {
+                "sub_total": 245.67,
+                "adjustments": [],
+                "total": 245.67,
+                "currency": "USD"
+            },
+            "products": [
+                {
+                    "external_id": "meat-123",
+                    "name": "Kirkland Signature Chicken Breast, 6 lbs",
+                    "url": "https://www.costco.com/products/123",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 89.99,
+                        "total": 89.99,
+                        "unit_price": 89.99
+                    }
+                },
+                {
+                    "external_id": "prod-456",
+                    "name": "Kirkland Signature Paper Towels, 12 rolls",
+                    "url": "https://www.costco.com/products/456",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 19.99,
+                        "total": 19.99,
+                        "unit_price": 19.99
+                    }
+                },
+                {
+                    "external_id": "snk-789",
+                    "name": "Kirkland Signature Mixed Nuts, 2.5 lbs",
+                    "url": "https://www.costco.com/products/789",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 135.69,
+                        "total": 135.69,
+                        "unit_price": 135.69
+                    }
+                }
+            ]
+        }
+    ],
+    "next_cursor": "eyJpZCI6MTIzNDU2NywiX3BvaW50c1RvTmV4dEl0ZW1zIjp0cnVlfQ==",
+    "limit": 5
+}
+
+{
+    "merchant": {
+        "id": 13,
+        "name": "Spotify"
+    },
+    "transactions": [
+        {
+            "id": "m3n4o5p6-k7l8-6m7n-1o2p-9q0r1s2t3u4v",
+            "external_id": "spot-901234567",
+            "datetime": "2024-03-03T00:00:00+00:00",
+            "url": "https://www.spotify.com/orders/901234567",
+            "order_status": "COMPLETED",
+            "payment_methods": [
+                {
+                    "external_id": "spot-789",
+                    "type": "CARD",
+                    "brand": "MASTERCARD",
+                    "last_four": "4444",
+                    "name": null,
+                    "transaction_amount": 9.99
+                }
+            ],
+            "price": {
+                "sub_total": 9.99,
+                "adjustments": [],
+                "total": 9.99,
+                "currency": "USD"
+            },
+            "products": [
+                {
+                    "external_id": "sub-123",
+                    "name": "Spotify Premium Monthly Subscription",
+                    "url": "https://www.spotify.com/products/123",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 9.99,
+                        "total": 9.99,
+                        "unit_price": 9.99
+                    }
+                }
+            ]
+        }
+    ],
+    "next_cursor": "eyJpZCI6MTM0NTY3OCwiX3BvaW50c1RvTmV4dEl0ZW1zIjp0cnVlfQ==",
+    "limit": 5
+}
+
+{
+    "merchant": {
+        "id": 14,
+        "name": "Home Depot"
+    },
+    "transactions": [
+        {
+            "id": "n4o5p6q7-l8m9-7n8o-2p3q-0r1s2t3u4v5w",
+            "external_id": "hd-012345678",
+            "datetime": "2024-03-02T09:15:00+00:00",
+            "url": "https://www.homedepot.com/orders/012345678",
+            "order_status": "COMPLETED",
+            "payment_methods": [
+                {
+                    "external_id": "hd-123",
+                    "type": "CARD",
+                    "brand": "HOMEDEPOT",
+                    "last_four": "7777",
+                    "name": null,
+                    "transaction_amount": 156.78
+                }
+            ],
+            "price": {
+                "sub_total": 156.78,
+                "adjustments": [],
+                "total": 156.78,
+                "currency": "USD"
+            },
+            "products": [
+                {
+                    "external_id": "tool-123",
+                    "name": "DEWALT 20V MAX Cordless Drill",
+                    "url": "https://www.homedepot.com/products/123",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 99.99,
+                        "total": 99.99,
+                        "unit_price": 99.99
+                    }
+                },
+                {
+                    "external_id": "paint-456",
+                    "name": "Behr Premium Plus Interior Paint, 1 Gallon",
+                    "url": "https://www.homedepot.com/products/456",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 56.79,
+                        "total": 56.79,
+                        "unit_price": 56.79
+                    }
+                }
+            ]
+        }
+    ],
+    "next_cursor": "eyJpZCI6MTQ1Njc4OSwiX3BvaW50c1RvTmV4dEl0ZW1zIjp0cnVlfQ==",
+    "limit": 5
+}
+
+{
+    "merchant": {
+        "id": 15,
+        "name": "Panera Bread"
+    },
+    "transactions": [
+        {
+            "id": "o5p6q7r8-m9n0-8o9p-3q4r-1s2t3u4v5w6x",
+            "external_id": "pnr-123456789",
+            "datetime": "2024-03-01T12:45:00+00:00",
+            "url": "https://www.panerabread.com/orders/123456789",
+            "order_status": "COMPLETED",
+            "payment_methods": [
+                {
+                    "external_id": "pnr-456",
+                    "type": "CARD",
+                    "brand": "PANERA",
+                    "last_four": "8888",
+                    "name": null,
+                    "transaction_amount": 24.95
+                }
+            ],
+            "price": {
+                "sub_total": 24.95,
+                "adjustments": [],
+                "total": 24.95,
+                "currency": "USD"
+            },
+            "products": [
+                {
+                    "external_id": "soup-123",
+                    "name": "Broccoli Cheddar Soup",
+                    "url": "https://www.panerabread.com/products/123",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 8.99,
+                        "total": 8.99,
+                        "unit_price": 8.99
+                    }
+                },
+                {
+                    "external_id": "sand-456",
+                    "name": "Turkey Avocado BLT",
+                    "url": "https://www.panerabread.com/products/456",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 12.99,
+                        "total": 12.99,
+                        "unit_price": 12.99
+                    }
+                },
+                {
+                    "external_id": "drk-789",
+                    "name": "Fountain Drink",
+                    "url": "https://www.panerabread.com/products/789",
+                    "quantity": 1,
+                    "eligibility": [],
+                    "price": {
+                        "sub_total": 2.97,
+                        "total": 2.97,
+                        "unit_price": 2.97
+                    }
+                }
+            ]
+        }
+    ],
+    "next_cursor": "eyJpZCI6MTU2Nzg5MCwiX3BvaW50c1RvTmV4dEl0ZW1zIjp0cnVlfQ==",
+    "limit": 5
+} 
