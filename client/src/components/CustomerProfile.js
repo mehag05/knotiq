@@ -7,17 +7,29 @@ import OpenAIUtils from '../utils/openai';
 export default function CustomerProfile({ profile, merchantName }) {
   const [generatedAd, setGeneratedAd] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null)
+
+  
 
   const handleGenerateAd = async () => {
     try {
+      // First, generate the ad prompt using OpenAIUtils
+      const segment = {
+        name: merchantName,
+        description: profile
+      };
+      
+      const adPrompt = await OpenAIUtils.generateAdPrompt(merchantName, segment, "products");
+      console.log("Generated ad prompt:", adPrompt);
+
+      // Then use the generated prompt for image generation
       const response = await fetch('http://localhost:5001/api/text_to_image', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'image/png'
         },
-        body: JSON.stringify({ prompt: profile })
+        body: JSON.stringify({ prompt: adPrompt })
       });
 
       if (!response.ok) {
@@ -29,7 +41,7 @@ export default function CustomerProfile({ profile, merchantName }) {
       const blob = await response.blob();
       const imageUrl = URL.createObjectURL(blob);
       setGeneratedAd({
-        prompt: profile,
+        prompt: adPrompt,
         imageUrl: imageUrl
       });
     } catch (error) {

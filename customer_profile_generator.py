@@ -65,7 +65,7 @@ class CustomerProfileGenerator:
         customer_segments = self.identify_customer_segments(top_customers)
         
         # Create prompt for GPT
-        prompt = f"""Based on the following customer data for {merchant_name}, generate a single, concise phrase that captures the essence of this customer base. Focus on their key characteristics, spending behavior, and purchase patterns.
+        prompt = f"""Based on the following customer data for {merchant_name}, generate a detailed profile that focuses on specific, data-driven insights about their spending behavior and purchase patterns.
 
 Key Metrics:
 - Average Transaction Value: ${spending_patterns['average_transaction']:.2f}
@@ -87,21 +87,24 @@ Purchase Behavior:
 - Regular Shoppers: {purchase_behavior['regular_shoppers']}
 - Recent Shoppers: {purchase_behavior['recent_shoppers']}
 
-Generate a single, descriptive phrase that captures:
-1. Their spending level (e.g., "premium", "value-conscious", "luxury")
-2. Their purchase frequency (e.g., "regular", "occasional", "seasonal")
-3. Their key characteristics (e.g., "tech-savvy", "fashion-forward", "budget-conscious")
+Generate a profile that focuses on:
+1. Specific spending patterns (e.g., "showing a preference for $100+ transactions", "maintaining $50-75 monthly spending")
+2. Concrete purchase behaviors (e.g., "shopping 2-3 times per month", "making bulk purchases during holiday seasons")
+3. Distinct customer characteristics based on data (e.g., "early morning shoppers", "weekend purchasers")
+4. Specific engagement patterns (e.g., "responding to seasonal promotions", "participating in loyalty programs")
 
-Format: A single phrase like "Premium regular shoppers with high brand loyalty" or "Value-conscious occasional buyers seeking convenience"."""
+Avoid generic terms like "regular shoppers", "high loyalty", or "value-conscious". Instead, use specific data points and patterns.
+
+Format: A single, detailed phrase that captures these specific insights, like "Customers averaging $120 transactions with 2.5 monthly visits, showing strong weekend shopping patterns and responding to seasonal promotions" or "Shoppers maintaining $60-80 monthly spend with 1.8 monthly visits, demonstrating preference for bulk purchases during holiday periods"."""
 
         try:
             response = openai.chat.completions.create(
                 model="gpt-3.5-turbo",
                 messages=[
-                    {"role": "system", "content": "You are a marketing analytics expert who creates concise, descriptive phrases that capture the essence of customer bases. Your phrases should be specific, memorable, and actionable."},
+                    {"role": "system", "content": "You are a data-driven marketing analyst who creates specific, measurable customer profiles based on concrete spending and purchase patterns. Avoid generic terms and focus on specific data points and behaviors."},
                     {"role": "user", "content": prompt}
                 ],
-                max_tokens=50,
+                max_tokens=100,
                 temperature=0.7
             )
             

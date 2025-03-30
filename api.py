@@ -136,31 +136,45 @@ def generate_image():
             return jsonify({'error': 'No prompt provided'}), 400
 
         print(f"Received prompt: {prompt}")
-        print("Attempting to generate image using Modal client...")
+        print("Attempting to generate image using Modal server...")
 
         try:
-            # Create an instance of the Inference class
-            inference = Inference()
+            # Call the Modal server endpoint
+            response = requests.post(
+                'https://mehag05--example-text-to-image-ui-dev.modal.run/api/text_to_image',
+                json={'prompt': prompt},
+                headers={'Content-Type': 'application/json'}
+            )
             
-            # Call the run method remotely
-            with stub.run():
-                images = inference.run.remote(prompt, batch_size=1)
+            print(f"Modal server response status: {response.status_code}")
+            print(f"Modal server response headers: {dict(response.headers)}")
             
-            if not images:
-                print("No images were generated")
-                return jsonify({'error': "No images were generated"}), 500
+            if not response.ok:
+                try:
+                    error_msg = response.json().get('error', 'Unknown error occurred')
+                except:
+                    error_msg = response.text
+                print(f"Modal server error response: {error_msg}")
+                return jsonify({'error': f"Modal server error: {error_msg}"}), 500
             
-            print(f"Successfully generated image of size: {len(images[0])} bytes")
+            if not response.content:
+                print("No content in response")
+                return jsonify({'error': "No image data received from Modal server"}), 500
             
-            # Return the first generated image
+            print(f"Successfully received image data of size: {len(response.content)} bytes")
+            
+            # Return the image directly from Modal server
             return send_file(
-                io.BytesIO(images[0]),
+                io.BytesIO(response.content),
                 mimetype='image/png'
             )
             
+        except requests.exceptions.RequestException as e:
+            print(f"Request error during Modal server call: {str(e)}")
+            return jsonify({'error': f"Failed to connect to Modal server: {str(e)}"}), 500
         except Exception as e:
-            print(f"Error during Modal function call: {str(e)}")
-            return jsonify({'error': f"Modal error: {str(e)}"}), 500
+            print(f"Unexpected error during Modal server call: {str(e)}")
+            return jsonify({'error': f"Unexpected error: {str(e)}"}), 500
             
     except Exception as e:
         print(f"Error generating image: {str(e)}")
