@@ -1,0 +1,405 @@
+{
+  "status": "success",
+  "merchants": [
+    {
+      "id": 1,
+      "name": "Travelocity"
+    },
+    {
+      "id": 2,
+      "name": "Lyft"
+    },
+    {
+      "id": 3,
+      "name": "Expedia"
+    },
+    {
+      "id": 4,
+      "name": "Orvis"
+    },
+    {
+      "id": 5,
+      "name": "Crutchfield"
+    },
+    {
+      "id": 6,
+      "name": "Sony"
+    },
+    {
+      "id": 7,
+      "name": "LEGO Store"
+    },
+    {
+      "id": 8,
+      "name": "Urban Outfitters"
+    },
+    {
+      "id": 9,
+      "name": "Les Schwab"
+    },
+    {
+      "id": 10,
+      "name": "GNC"
+    },
+    {
+      "id": 11,
+      "name": "RockAuto"
+    },
+    {
+      "id": 12,
+      "name": "McDonald's"
+    },
+    {
+      "id": 13,
+      "name": "Hulu"
+    },
+    {
+      "id": 14,
+      "name": "Carvana"
+    },
+    {
+      "id": 15,
+      "name": "Food Lion"
+    },
+    {
+      "id": 16,
+      "name": "Overstock"
+    },
+    {
+      "id": 17,
+      "name": "Crunchyroll"
+    },
+    {
+      "id": 18,
+      "name": "Ace Hardware"
+    },
+    {
+      "id": 19,
+      "name": "Microsoft Store"
+    },
+    {
+      "id": 20,
+      "name": "TJ Maxx"
+    },
+    {
+      "id": 21,
+      "name": "Buffalo Wild Wings"
+    },
+    {
+      "id": 22,
+      "name": "Best Western"
+    },
+    {
+      "id": 23,
+      "name": "H&M"
+    },
+    {
+      "id": 24,
+      "name": "Deezer"
+    },
+    {
+      "id": 25,
+      "name": "Jack in the Box"
+    },
+    {
+      "id": 26,
+      "name": "Kroger Pharmacy"
+    },
+    {
+      "id": 27,
+      "name": "Michaels"
+    },
+    {
+      "id": 28,
+      "name": "REI"
+    },
+    {
+      "id": 29,
+      "name": "Kroger"
+    },
+    {
+      "id": 30,
+      "name": "In-N-Out Burger"
+    },
+    {
+      "id": 31,
+      "name": "Orbitz"
+    },
+    {
+      "id": 32,
+      "name": "Nordstrom"
+    },
+    {
+      "id": 33,
+      "name": "Publix Pharmacy"
+    },
+    {
+      "id": 34,
+      "name": "Reebok"
+    },
+    {
+      "id": 35,
+      "name": "Publix"
+    },
+    {
+      "id": 36,
+      "name": "Wish"
+    },
+    {
+      "id": 37,
+      "name": "Nike"
+    },
+    {
+      "id": 38,
+      "name": "Old Navy"
+    },
+    {
+      "id": 39,
+      "name": "Costco"
+    },
+    {
+      "id": 40,
+      "name": "Pier 1"
+    },
+    {
+      "id": 41,
+      "name": "West Elm"
+    },
+    {
+      "id": 42,
+      "name": "Zappos"
+    },
+    {
+      "id": 43,
+      "name": "Marriott"
+    },
+    {
+      "id": 44,
+      "name": "Under Armour"
+    },
+    {
+      "id": 45,
+      "name": "Petco"
+    },
+    {
+      "id": 46,
+      "name": "Chili's"
+    },
+    {
+      "id": 47,
+      "name": "Burger King"
+    },
+    {
+      "id": 48,
+      "name": "Harris Teeter"
+    },
+    {
+      "id": 49,
+      "name": "Hobby Lobby"
+    },
+    {
+      "id": 50,
+      "name": "Chipotle"
+    },
+    {
+      "id": 51,
+      "name": "Culver's"
+    },
+    {
+      "id": 52,
+      "name": "Amazon Prime"
+    },
+    {
+      "id": 53,
+      "name": "Sephora"
+    },
+    {
+      "id": 54,
+      "name": "Subway"
+    },
+    {
+      "id": 55,
+      "name": "AutoZone"
+    },
+    {
+      "id": 56,
+      "name": "Chick-fil-A"
+    },
+    {
+      "id": 57,
+      "name": "Adidas"
+    },
+    {
+      "id": 58,
+      "name": "Patagonia"
+    },
+    {
+      "id": 59,
+      "name": "L.L.Bean"
+    },
+    {
+      "id": 60,
+      "name": "Shiseido"
+    },
+    {
+      "id": 61,
+      "name": "1A Auto"
+    },
+    {
+      "id": 62,
+      "name": "American Eagle"
+    },
+    {
+      "id": 63,
+      "name": "Duane Reade"
+    },
+    {
+      "id": 64,
+      "name": "Pizza Hut"
+    },
+    {
+      "id": 65,
+      "name": "CVS Pharmacy"
+    },
+    {
+      "id": 66,
+      "name": "Red Robin"
+    },
+    {
+      "id": 67,
+      "name": "Fenty Beauty"
+    },
+    {
+      "id": 68,
+      "name": "Jet.com"
+    },
+    {
+      "id": 69,
+      "name": "Lululemon"
+    },
+    {
+      "id": 70,
+      "name": "Midas"
+    },
+    {
+      "id": 71,
+      "name": "Safeway"
+    },
+    {
+      "id": 72,
+      "name": "Sam's Club"
+    },
+    {
+      "id": 73,
+      "name": "Calvin Klein"
+    },
+    {
+      "id": 74,
+      "name": "CarParts.com"
+    },
+    {
+      "id": 75,
+      "name": "Trunk Club"
+    },
+    {
+      "id": 76,
+      "name": "Lush"
+    },
+    {
+      "id": 77,
+      "name": "Adobe Creative Cloud"
+    },
+    {
+      "id": 78,
+      "name": "Skyscanner"
+    },
+    {
+      "id": 79,
+      "name": "Spotify"
+    },
+    {
+      "id": 80,
+      "name": "Newegg"
+    },
+    {
+      "id": 81,
+      "name": "ThinkGeek"
+    },
+    {
+      "id": 82,
+      "name": "Wayfair"
+    },
+    {
+      "id": 83,
+      "name": "Arby's"
+    },
+    {
+      "id": 84,
+      "name": "Cabela's"
+    },
+    {
+      "id": 85,
+      "name": "Dell"
+    },
+    {
+      "id": 86,
+      "name": "Whole Foods"
+    },
+    {
+      "id": 87,
+      "name": "Pandora"
+    },
+    {
+      "id": 88,
+      "name": "Hotwire"
+    },
+    {
+      "id": 89,
+      "name": "Vons"
+    },
+    {
+      "id": 90,
+      "name": "Outback Steakhouse"
+    },
+    {
+      "id": 91,
+      "name": "Levi's"
+    },
+    {
+      "id": 92,
+      "name": "Bed Bath & Beyond"
+    },
+    {
+      "id": 93,
+      "name": "Goodyear"
+    },
+    {
+      "id": 94,
+      "name": "Thrifty White"
+    },
+    {
+      "id": 95,
+      "name": "Office Depot"
+    },
+    {
+      "id": 96,
+      "name": "Hot Topic"
+    },
+    {
+      "id": 97,
+      "name": "Microsoft 365"
+    },
+    {
+      "id": 98,
+      "name": "Guitar Center"
+    },
+    {
+      "id": 99,
+      "name": "Groupon"
+    },
+    {
+      "id": 100,
+      "name": "DoorDash"
+    }
+  ]
+}
