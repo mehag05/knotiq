@@ -57,23 +57,87 @@ Please provide:
 The post should resonate with this specific audience segment while maintaining Uber's brand voice: professional yet approachable, innovative, and customer-focused.`;
 };
 
+const examplePrompt = `
+1. Compelling Visual Description:
+A clean, modern split-screen image:
+
+Left: A young millennial in activewear stepping into a sanitized Uber, driver wearing a mask, a "Verified Clean" badge on the window.
+
+Right: A smoothie bowl, gym bag, and a phone screen showing the Uber app with "Your ride is on the way!"
+
+2. Attention-Grabbing Headline:
+Safe Rides, Healthier Lives
+
+3. Engaging Caption:
+Your health comes first. With sanitized rides and contactless payments, Uber gets you to your gym, grocery run, or wellness retreat without worry. Ready to ride?
+
+4. Hashtags:
+#HealthyLiving #UberSafe #WellnessOnTheGo #MillennialMindset #RideWithCare
+
+5. Call-to-Action:
+Tap the link in bio to ride safe and stress-free today.
+`;
+
 export default function Dashboard() {
   const [selectedSegment, setSelectedSegment] = useState(null);
+  const [generatedImageUrl, setGeneratedImageUrl] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleGenerateAd = (segment) => {
-    const prompt = generatePrompt(segment);
-    alert(`Sending to ChatGPT API:\n\n${prompt}`);
-    // Here you would typically make the API call to ChatGPT
+  const handleGenerateAd = async (segment) => {
+    setIsLoading(true);
+    setError(null);
+    setGeneratedImageUrl(null);
+
+    try {
+      const imageUrl = await generateImage(examplePrompt);
+      console.log('Image generated:', imageUrl);
+      setGeneratedImageUrl(imageUrl);
+    } catch (error) {
+      console.error('Error:', error);
+      setError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
+
+  async function generateImage(prompt) {
+    try {
+      const MODAL_URL = "https://slee37--example-text-to-image-ui.modal.run";
+      
+      const response = await fetch(`${MODAL_URL}/api/text_to_image`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          prompt: prompt
+        })
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(errorText || 'Image generation failed');
+      }
+
+      const blob = await response.blob();
+      const imageUrl = URL.createObjectURL(blob);
+
+      return imageUrl;
+    } catch (error) {
+      console.error('Failed to generate image:', error);
+      throw error;
+    }
+  }
 
   return (
     <div className="min-h-screen flex flex-col items-center p-4 bg-gradient-to-br from-gray-50 to-gray-100">
       <h1 className="text-3xl font-bold mt-8 mb-4 text-transparent bg-clip-text bg-gradient-to-r from-gray-800 to-gray-600">
         Customer Segments Dashboard
       </h1>
-      <div className="w-full max-w-7xl flex">
+      <div className="w-full max-w-7xl flex flex-col md:flex-row">
         {/* Left side - Circle diagram */}
-        <div className="w-1/2 relative flex items-center justify-center min-h-[500px]">
+        <div className="w-full md:w-1/2 relative flex items-center justify-center min-h-[500px]">
           {/* Central Uber circle */}
           <motion.div 
             className="w-32 h-32 rounded-full bg-gradient-to-br from-black to-gray-800 text-white flex items-center justify-center text-xl font-bold shadow-lg"
@@ -131,8 +195,8 @@ export default function Dashboard() {
           })}
         </div>
 
-        {/* Right side - Circular Card */}
-        <div className="w-1/2 pl-8 flex items-center justify-center">
+        {/* Right side - Circular Card and Generated Image */}
+        <div className="w-full md:w-1/2 pl-0 md:pl-8 flex flex-col items-center justify-center">
           {selectedSegment && (
             <motion.div
               initial={{ scale: 0, x: -100, opacity: 0 }}
@@ -142,7 +206,7 @@ export default function Dashboard() {
                 stiffness: 260,
                 damping: 20
               }}
-              className="w-96 h-96 rounded-full bg-white/80 backdrop-blur-sm border-2 border-white/20 shadow-lg p-8 flex flex-col items-center justify-center text-center"
+              className="w-96 h-96 rounded-full bg-white/80 backdrop-blur-sm border-2 border-white/20 shadow-lg p-8 flex flex-col items-center justify-center text-center mb-6"
             >
               <h3 className={`text-xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r ${selectedSegment.gradient}`}>
                 {selectedSegment.name}
@@ -153,9 +217,49 @@ export default function Dashboard() {
               <Button 
                 className={`bg-gradient-to-r ${selectedSegment.gradient} text-white border-none`}
                 onClick={() => handleGenerateAd(selectedSegment)}
+                disabled={isLoading}
               >
-                Generate Ad
+                {isLoading ? 'Generating...' : 'Generate Ad'}
               </Button>
+            </motion.div>
+          )}
+
+          {/* Loading indicator */}
+          {isLoading && (
+            <div className="mt-6 text-center">
+              <div className="w-8 h-8 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin mx-auto mb-2"></div>
+              <p className="text-gray-600">Generating image...</p>
+            </div>
+          )}
+
+          {/* Error message */}
+          {error && (
+            <div className="mt-6 p-4 bg-red-100 text-red-700 rounded-lg max-w-md">
+              <p className="font-bold">Error:</p>
+              <p>{error}</p>
+            </div>
+          )}
+
+          {/* Generated image */}
+          {generatedImageUrl && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mt-6 max-w-md w-full"
+            >
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-center">Generated Ad</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <img 
+                    src={generatedImageUrl} 
+                    alt="Generated Ad" 
+                    className="w-full h-auto rounded-lg shadow-md"
+                  />
+                </CardContent>
+              </Card>
             </motion.div>
           )}
         </div>
