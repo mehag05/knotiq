@@ -3,6 +3,7 @@ require('dotenv').config(); // Load environment variables from .env file
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
+const cors = require('cors');
 
 // For Node 18+, fetch is available globally. Otherwise, install and import node-fetch.
 // const fetch = require('node-fetch');
@@ -21,9 +22,14 @@ const basicAuthHeader = 'Basic ' + Buffer.from(`${KNOT_CLIENT_ID}:${KNOT_CLIENT_
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Set up view engine (EJS)
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+// Enable CORS for the React development server
+app.use(cors({
+  origin: 'http://localhost:3000', // React dev server
+  credentials: true
+}));
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 // Initialize (or create) the SQLite database
 const db = new sqlite3.Database('./transactions.db', (err) => {
@@ -120,9 +126,8 @@ app.post('/api/sync-transactions', async (req, res) => {
 
 // Home page: provides navigation to the various steps.
 app.get('/', (req, res) => {
-    res.render('index', { env: process.env });
+  res.json({ message: 'Knot Data Demo API' });
 });
-
 
 // Render a view to initialize and open the Knot SDK (client-side integration)
 app.get('/init-sdk', (req, res) => {
@@ -184,6 +189,8 @@ app.post('/webhook', async (req, res) => {
               JSON.stringify(txn.payment_methods || []),
               JSON.stringify(txn.price || {}),
               JSON.stringify(txn.products || []),
+              merchantAccountId,
+              merchant.name || null,
               JSON.stringify(txn)
             ],
             (err) => {
@@ -266,6 +273,11 @@ app.get('/finance', (req, res) => {
       res.json(summary);
     });
   });
+
+// Handle React routing, return all requests to React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

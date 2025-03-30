@@ -3,6 +3,7 @@ import { Button } from './components/ui/button';
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import axios from 'axios';
+import CustomerProfile from './components/CustomerProfile';
 
 export default function Dashboard() {
   const [merchantName, setMerchantName] = useState('');
@@ -36,7 +37,7 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen flex flex-col items-center p-4 bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Search Section */}
-      <div className="w-full max-w-4xl mt-8 mb-8">
+      <div className="w-full max-w-6xl mt-8 mb-8">
         <Card className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
           <CardContent className="p-8">
             <h1 className="text-3xl font-bold mb-6 text-center">Merchant Analytics Dashboard</h1>
@@ -62,7 +63,7 @@ export default function Dashboard() {
       </div>
 
       {error && (
-        <div className="w-full max-w-4xl mb-8">
+        <div className="w-full max-w-6xl mb-8">
           <div className="p-4 bg-red-100 text-red-700 rounded-lg">
             Error: {error}
           </div>
@@ -73,68 +74,80 @@ export default function Dashboard() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="w-full max-w-4xl"
+          className="w-full max-w-6xl"
         >
           <h2 className="text-2xl font-bold mb-6 text-gray-800">{merchantData.merchant_name}</h2>
 
-          {/* Key Metrics */}
-          <div className="grid grid-cols-4 gap-4 mb-8">
+          {/* Main Content Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Left Column: Metrics and Profile */}
+            <div className="space-y-6">
+              {/* Key Metrics */}
+              <div className="grid grid-cols-2 gap-4">
+                <Card className="bg-white">
+                  <CardContent className="p-6">
+                    <div className="text-2xl font-bold text-blue-600">{merchantData.demographics.total_customers}</div>
+                    <div className="text-sm text-gray-600">Total Customers</div>
+                  </CardContent>
+                </Card>
+                <Card className="bg-white">
+                  <CardContent className="p-6">
+                    <div className="text-2xl font-bold text-green-600">
+                      ${merchantData.demographics.average_transaction_value.toFixed(2)}
+                    </div>
+                    <div className="text-sm text-gray-600">Avg Transaction</div>
+                  </CardContent>
+                </Card>
+                <Card className="bg-white">
+                  <CardContent className="p-6">
+                    <div className="text-2xl font-bold text-emerald-600">
+                      {merchantData.demographics.retention_metrics.retention_rate}%
+                    </div>
+                    <div className="text-sm text-gray-600">Retention Rate</div>
+                  </CardContent>
+                </Card>
+                <Card className="bg-white">
+                  <CardContent className="p-6">
+                    <div className="text-2xl font-bold text-red-600">
+                      {merchantData.demographics.retention_metrics.churn_rate}%
+                    </div>
+                    <div className="text-sm text-gray-600">Churn Rate</div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Customer Profile */}
+              <CustomerProfile 
+                profile={merchantData.profile} 
+                merchantName={merchantName}
+              />
+            </div>
+
+            {/* Right Column: Top Customers */}
             <Card className="bg-white">
-              <CardContent className="p-6">
-                <div className="text-2xl font-bold text-blue-600">{merchantData.demographics.total_customers}</div>
-                <div className="text-sm text-gray-600">Total Customers</div>
-              </CardContent>
-            </Card>
-            <Card className="bg-white">
-              <CardContent className="p-6">
-                <div className="text-2xl font-bold text-green-600">
-                  ${merchantData.demographics.average_transaction_value.toFixed(2)}
+              <CardHeader>
+                <CardTitle>Top Customers</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4 max-h-[600px] overflow-y-auto">
+                  {merchantData.top_customers.map((customer, index) => (
+                    <div key={index} className="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                      <div className="flex justify-between items-center">
+                        <div>
+                          <h3 className="text-lg font-semibold text-gray-800">Customer {customer.customer_id}</h3>
+                          <p className="text-sm text-gray-600">CLV Score: ${customer.clv_score.toFixed(2)}</p>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-sm text-gray-600">Frequency: {customer.purchase_frequency.toFixed(2)}/month</p>
+                          <p className="text-sm text-gray-600">Avg Transaction: ${customer.avg_transaction_value.toFixed(2)}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <div className="text-sm text-gray-600">Avg Transaction</div>
-              </CardContent>
-            </Card>
-            <Card className="bg-white">
-              <CardContent className="p-6">
-                <div className="text-2xl font-bold text-emerald-600">
-                  {merchantData.demographics.retention_metrics.retention_rate}%
-                </div>
-                <div className="text-sm text-gray-600">Retention Rate</div>
-              </CardContent>
-            </Card>
-            <Card className="bg-white">
-              <CardContent className="p-6">
-                <div className="text-2xl font-bold text-red-600">
-                  {merchantData.demographics.retention_metrics.churn_rate}%
-                </div>
-                <div className="text-sm text-gray-600">Churn Rate</div>
               </CardContent>
             </Card>
           </div>
-
-          {/* Top Customers */}
-          <Card className="mb-8">
-            <CardHeader>
-              <CardTitle>Top Customers</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {merchantData.top_customers.map((customer, index) => (
-                  <div key={index} className="bg-white rounded-lg p-4 border border-gray-100 shadow-sm">
-                    <div className="flex justify-between items-center">
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-800">Customer {customer.customer_id}</h3>
-                        <p className="text-sm text-gray-600">CLV Score: ${customer.clv_score.toFixed(2)}</p>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-sm text-gray-600">Frequency: {customer.purchase_frequency.toFixed(2)}/month</p>
-                        <p className="text-sm text-gray-600">Avg Transaction: ${customer.avg_transaction_value.toFixed(2)}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
         </motion.div>
       )}
     </div>

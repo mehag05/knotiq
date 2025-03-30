@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_from_directory, render_template
+from flask import Flask, request, jsonify, send_from_directory, render_template, send_file
 from flask_cors import CORS
 from clv_analyzer import CLVAnalyzer
 import os
@@ -7,6 +7,11 @@ from dotenv import load_dotenv
 import json
 import numpy as np
 from functools import wraps
+from customer_profile_generator import CustomerProfileGenerator
+import io
+import modal
+from text_to_image import Inference
+import requests
 
 # Load environment variables
 load_dotenv()
@@ -19,6 +24,10 @@ openai.api_key = os.getenv('OPENAI_API_KEY')
 
 # Initialize analyzer
 clv_analyzer = CLVAnalyzer()
+profile_generator = CustomerProfileGenerator()
+
+# Initialize Modal client
+stub = modal.Stub("text-to-image")
 
 # Simple merchant authentication (in production, use proper auth)
 MERCHANT_CREDENTIALS = {
@@ -99,17 +108,63 @@ def get_merchant_top_customers(merchant_name):
             'retention_metrics': insights['retention_metrics']
         }
         
+        # Generate profile and ad suggestions
+        profile = profile_generator.generate_customer_profile(merchant_name, top_customers)
+        ad_suggestions = profile_generator.generate_ad_suggestions(merchant_name, top_customers)
+        
         return jsonify({
             'status': 'success',
             'merchant_name': merchant_name,
             'top_customers': top_customers,
-            'demographics': demographics
+            'demographics': demographics,
+            'profile': profile,
+            'ad_suggestions': ad_suggestions
         })
     except Exception as e:
         return jsonify({
             'status': 'error',
             'message': str(e)
         }), 500
+
+@app.route('/api/text_to_image', methods=['POST'])
+def generate_image():
+    try:
+        data = request.get_json()
+        prompt = data.get('prompt')
+        
+        if not prompt:
+            return jsonify({'error': 'No prompt provided'}), 400
+
+        print(f"Received prompt: {prompt}")
+        print("Attempting to generate image using Modal client...")
+
+        try:
+            # Create an instance of the Inference class
+            inference = Inference()
+            
+            # Call the run method remotely
+            with stub.run():
+                images = inference.run.remote(prompt, batch_size=1)
+            
+            if not images:
+                print("No images were generated")
+                return jsonify({'error': "No images were generated"}), 500
+            
+            print(f"Successfully generated image of size: {len(images[0])} bytes")
+            
+            # Return the first generated image
+            return send_file(
+                io.BytesIO(images[0]),
+                mimetype='image/png'
+            )
+            
+        except Exception as e:
+            print(f"Error during Modal function call: {str(e)}")
+            return jsonify({'error': f"Modal error: {str(e)}"}), 500
+            
+    except Exception as e:
+        print(f"Error generating image: {str(e)}")
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001) 
