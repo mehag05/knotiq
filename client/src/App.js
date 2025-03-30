@@ -2,6 +2,8 @@ import { Card, CardContent, CardHeader, CardTitle } from './components/ui/card';
 import { Button } from './components/ui/button';
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
+import OpenAIUtils from './utils/openaiutils.js';
+
 
 const customerSegments = [
   {
@@ -42,41 +44,6 @@ const customerSegments = [
   }
 ];
 
-const generatePrompt = (segment) => {
-  return `As a professional designer and marketer, generate an engaging Instagram post for Uber targeting ${segment.name}. 
-
-Context: ${segment.description}
-
-Please provide:
-1. A compelling visual description (image/graphic concept)
-2. Attention-grabbing headline (max 70 characters)
-3. Engaging caption (include emojis, max 200 characters)
-4. 3-5 relevant hashtags
-5. Call-to-action
-
-The post should resonate with this specific audience segment while maintaining Uber's brand voice: professional yet approachable, innovative, and customer-focused.`;
-};
-
-const examplePrompt = `
-1. Compelling Visual Description:
-A clean, modern split-screen image:
-
-Left: A young millennial in activewear stepping into a sanitized Uber, driver wearing a mask, a "Verified Clean" badge on the window.
-
-Right: A smoothie bowl, gym bag, and a phone screen showing the Uber app with "Your ride is on the way!"
-
-2. Attention-Grabbing Headline:
-Safe Rides, Healthier Lives
-
-3. Engaging Caption:
-Your health comes first. With sanitized rides and contactless payments, Uber gets you to your gym, grocery run, or wellness retreat without worry. Ready to ride?
-
-4. Hashtags:
-#HealthyLiving #UberSafe #WellnessOnTheGo #MillennialMindset #RideWithCare
-
-5. Call-to-Action:
-Tap the link in bio to ride safe and stress-free today.
-`;
 
 export default function Dashboard() {
   const [selectedSegment, setSelectedSegment] = useState(null);
@@ -84,20 +51,28 @@ export default function Dashboard() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleGenerateAd = async (segment) => {
-    setIsLoading(true);
-    setError(null);
-    setGeneratedImageUrl(null);
-
+  const handleGenerateAd = async (segment, merchantName, productName) => {
     try {
-      const imageUrl = await generateImage(examplePrompt);
-      console.log('Image generated:', imageUrl);
-      setGeneratedImageUrl(imageUrl);
+      // Use await to resolve the promise
+      const promptContent = await OpenAIUtils.generateAdPrompt(merchantName, segment, productName);
+      console.log(promptContent); 
+
+      setIsLoading(true);
+      setError(null);
+      setGeneratedImageUrl(null);
+  
+      try {
+        const imageUrl = await generateImage(promptContent);
+        console.log('Image generated:', imageUrl);
+        setGeneratedImageUrl(imageUrl);
+      } catch (error) {
+        console.error('Error:', error);
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
     } catch (error) {
-      console.error('Error:', error);
-      setError(error.message);
-    } finally {
-      setIsLoading(false);
+      console.error("Error getting prompt:", error);
     }
   };
 
@@ -216,7 +191,7 @@ export default function Dashboard() {
               </p>
               <Button 
                 className={`bg-gradient-to-r ${selectedSegment.gradient} text-white border-none`}
-                onClick={() => handleGenerateAd(selectedSegment)}
+                onClick={() => handleGenerateAd(selectedSegment, "Uber", "Uber Eats")}
                 disabled={isLoading}
               >
                 {isLoading ? 'Generating...' : 'Generate Ad'}
